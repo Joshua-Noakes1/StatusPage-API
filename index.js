@@ -41,6 +41,39 @@ app.post("/post", (req, res) => {
                     services.ombi_partial.main();
                 }
                 break;
+            case 'sonarr':
+                // we check if an error event is currently in action
+                if (services.ed.data.sonarr == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Sonarr Error!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.sonarr = 1;
+                    // Then we call the main fuction from the services partial error js
+                    services.sonarr_partial.main();
+                }
+                break;
+            case 'radarr':
+                // we check if an error event is currently in action
+                if (services.ed.data.radarr == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Radarr Error!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.radarr = 1;
+                    // Then we call the main fuction from the services partial error js
+                    services.radarr_partial.main();
+                }
+                break;
+            case 'xteve':
+                // we check if an error event is currently in action
+                if (services.ed.data.xteve == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New XTeVe Error!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.xteve = 1;
+                    // Then we call the main fuction from the services partial error js
+                    services.xteve_partial.main();
+                }
+                break;
         }
     } else if (req.body.webhook_event_data.check_state_name == 'Available') {
         console.log('----------')
@@ -66,6 +99,39 @@ app.post("/post", (req, res) => {
                     services.ed.data.ombi = 0;
                     // Then we call the main fuction from the services partial error js
                     services.ombi_fix.fix();
+                }
+                break;
+            case 'sonarr':
+                // we check if an error event is currently in action
+                if (!services.ed.data.sonarr == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Sonarr Fix!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.sonarr = 0;
+                    // Then we call the main fuction from the services partial error js
+                    services.sonarr_fix.fix();
+                }
+                break;
+            case 'radarr':
+                // we check if an error event is currently in action
+                if (!services.ed.data.radarr == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Radarr Fix!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.radarr = 0;
+                    // Then we call the main fuction from the services partial error js
+                    services.radarr_fix.fix();
+                }
+                break;
+            case 'xteve':
+                // we check if an error event is currently in action
+                if (!services.ed.data.xteve == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New XTeVe Fix!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.xteve = 0;
+                    // Then we call the main fuction from the services partial error js
+                    services.xteve_fix.fix();
                 }
                 break;
         }

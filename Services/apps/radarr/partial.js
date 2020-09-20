@@ -12,15 +12,15 @@ const {
 } = require('bluebird');
 // We're importing the json errors and the major event
 const major_event = require('./major')
-const error_data = require('../arrays/array');
+const error_data = require('../../arrays/array');
 
 // Our main Partial outage Function
 function main() {
     var incident = {
         // Incident name
-        name: 'Plex connectivity issues',
+        name: 'Radarr connectivity issues',
         // Incident description (supports markdown)
-        message: 'Plex is currently having connectivity issues on Firepower Cloud.',
+        message: 'Radarr is currently having connectivity issues on Firepower Cloud.',
         // Incident status (https://docs.cachethq.io/docs/incident-statuses)
         status: 'Investigating',
         // Whether the incident will be visible to the public or only to logged in users
@@ -28,7 +28,7 @@ function main() {
         // Whether to send out e-mail notifications to subscribers regarding this incident
         notify: true,
         // Component ID affected by this incident (optional)
-        component_id: process.env.plexid,
+        component_id: process.env.radarrid,
         // Component status (required if component_id is specified) (https://docs.cachethq.io/docs/component-statuses)
         component_status: 'Partial Outage'
     };
@@ -37,12 +37,12 @@ function main() {
     cachet.reportIncident(incident)
         .then(function (response) {
             // Log API response
-            console.log('Plex Partial Outage Reported at ' + response.data.created_at);
+            console.log('Radarr Partial Outage Reported at ' + response.data.created_at);
             (async () => {
 
                 // We're now setting a delay for 10 mins here before triggering the major event function which sets The service into Major Outage mode
                 await delay(600 * 1000)
-                if (!error_data.data.plex == 0) {
+                if (!error_data.data.radarr == 0) {
                     major_event.major();
                 }
             })();
