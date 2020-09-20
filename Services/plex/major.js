@@ -9,7 +9,6 @@ var cachet = new CachetAPI({
 });
 
 function major() {
-
     var incident = {
         // Incident name
         name: 'Major plex connectivity issues',
@@ -36,7 +35,6 @@ function major() {
             // Log errors to console
             console.log('Fatal Error', err);
         });
-
 }
 
 module.exports = {

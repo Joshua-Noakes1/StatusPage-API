@@ -41,7 +41,7 @@ function main() {
             (async () => {
 
                 // We're now setting a delay for 10 mins here before triggering the major event function which sets The service into Major Outage mode
-                await delay(20 * 1000)
+                await delay(600 * 1000)
                 if (!error_data.data.plex == 0) {
                     major_event.major();
                 }

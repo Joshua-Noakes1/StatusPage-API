@@ -8,29 +8,29 @@ var cachet = new CachetAPI({
     apiKey: process.env.cachet_api
 });
 
-function fix() {
+function major() {
     var incident = {
         // Incident name
-        name: 'Plex recovered',
+        name: 'Major ombi connectivity issues',
         // Incident description (supports markdown)
-        message: 'Plex has now recovered.',
+        message: 'Ombi is currently having major connectivity issues on Firepower Cloud.',
         // Incident status (https://docs.cachethq.io/docs/incident-statuses)
-        status: 'Fixed',
+        status: 'Investigating',
         // Whether the incident will be visible to the public or only to logged in users
         visible: true,
         // Whether to send out e-mail notifications to subscribers regarding this incident
         notify: true,
         // Component ID affected by this incident (optional)
-        component_id: process.env.plexid,
+        component_id: process.env.ombiid,
         // Component status (required if component_id is specified) (https://docs.cachethq.io/docs/component-statuses)
-        component_status: 'Operational'
+        component_status: 'Major Outage'
     };
 
     // Report it so it shows up on the status page
     cachet.reportIncident(incident)
         .then(function (response) {
             // Log API response
-            console.log('Plex Fix Reported at ' + response.data.created_at);
+            console.log('Ombi Major Outage Reported at ' + response.data.created_at);
         }).catch(function (err) {
             // Log errors to console
             console.log('Fatal Error', err);
@@ -38,5 +38,5 @@ function fix() {
 }
 
 module.exports = {
-    fix
+    major
 }

@@ -22,12 +22,23 @@ app.post("/post", (req, res) => {
             case 'plex':
                 // we check if an error event is currently in action
                 if (services.ed.data.plex == 0) {
-                // Console log the error and what service caused it
-                console.log(`New Plex Error!`);
-                // We push 1 to the json object so we can track the error
-                services.ed.data.plex = 1;
-                // Then we call the main fuction from the services partial error js
-                services.plex_partial.main();
+                    // Console log the error and what service caused it
+                    console.log(`New Plex Error!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.plex = 1;
+                    // Then we call the main fuction from the services partial error js
+                    services.plex_partial.main();
+                }
+                break;
+            case 'ombi':
+                // we check if an error event is currently in action
+                if (services.ed.data.ombi == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Ombi Error!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.ombi = 1;
+                    // Then we call the main fuction from the services partial error js
+                    services.ombi_partial.main();
                 }
                 break;
         }
@@ -38,12 +49,23 @@ app.post("/post", (req, res) => {
             case 'plex':
                 // we check if an error event is currently in action
                 if (!services.ed.data.plex == 0) {
-                // Console log the error and what service caused it
-                console.log(`New Plex Fix!`);
-                // We push 1 to the json object so we can track the error
-                services.ed.data.plex = 0;
-                // Then we call the main fuction from the services partial error js
-                services.plex_fix.fix();
+                    // Console log the error and what service caused it
+                    console.log(`New Plex Fix!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.plex = 0;
+                    // Then we call the main fuction from the services partial error js
+                    services.plex_fix.fix();
+                }
+                break;
+            case 'ombi':
+                // we check if an error event is currently in action
+                if (!services.ed.data.ombi == 0) {
+                    // Console log the error and what service caused it
+                    console.log(`New Ombi Fix!`);
+                    // We push 1 to the json object so we can track the error
+                    services.ed.data.ombi = 0;
+                    // Then we call the main fuction from the services partial error js
+                    services.ombi_fix.fix();
                 }
                 break;
         }

@@ -11,9 +11,9 @@ var cachet = new CachetAPI({
 function fix() {
     var incident = {
         // Incident name
-        name: 'Plex recovered',
+        name: 'Ombi recovered',
         // Incident description (supports markdown)
-        message: 'Plex has now recovered.',
+        message: 'Ombi has now recovered.',
         // Incident status (https://docs.cachethq.io/docs/incident-statuses)
         status: 'Fixed',
         // Whether the incident will be visible to the public or only to logged in users
@@ -21,7 +21,7 @@ function fix() {
         // Whether to send out e-mail notifications to subscribers regarding this incident
         notify: true,
         // Component ID affected by this incident (optional)
-        component_id: process.env.plexid,
+        component_id: process.env.ombiid,
         // Component status (required if component_id is specified) (https://docs.cachethq.io/docs/component-statuses)
         component_status: 'Operational'
     };
@@ -30,7 +30,7 @@ function fix() {
     cachet.reportIncident(incident)
         .then(function (response) {
             // Log API response
-            console.log('Plex Fix Reported at ' + response.data.created_at);
+            console.log('Ombi Fix Reported at ' + response.data.created_at);
         }).catch(function (err) {
             // Log errors to console
             console.log('Fatal Error', err);
