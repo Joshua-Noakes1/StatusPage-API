@@ -16,7 +16,7 @@ app.post("/post", (req, res) => {
     res.status(200).end()
     // We look if an error occured
     if (req.body.webhook_event_data.check_state_name == 'Not Responding' || req.body.webhook_event_data.check_state_name == 'Reporting Error') {
-        console.log('----------')
+        console.log('I----------')
         // We check what service errored and then act upon it 
         switch (req.body.webhook_event_data.check_name) {
             case 'plex':
@@ -76,7 +76,7 @@ app.post("/post", (req, res) => {
                 break;
         }
     } else if (req.body.webhook_event_data.check_state_name == 'Available') {
-        console.log('----------')
+        console.log('F----------')
         // We check if we've recovered 
         switch (req.body.webhook_event_data.check_name) {
             case 'plex':
